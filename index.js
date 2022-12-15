@@ -4,12 +4,22 @@ for(i=0;i<n;i++){
 
     var sound = this.textContent;
     makeSound(sound);
-    // 
+    addAnimation(sound);
 })};
 
 
-document.addEventListener("keydown",function(press){makeSound(press.key);
+document.addEventListener("keydown",function(press){
+    makeSound(press.key);
+    addAnimation(press.key);
 });
+
+function addAnimation(input){
+    var animation = document.querySelector("."+input).classList;
+    animation.add("pressed");
+    setTimeout(function(){
+        animation.remove("pressed")
+    },100);
+}
 
 function makeSound(key){
     switch(key){
